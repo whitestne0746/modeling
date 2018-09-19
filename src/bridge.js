@@ -1,4 +1,4 @@
-import { } from "imports-loader?THREE=three!three/examples/js/QuickHull.js";
+import { } from 'imports-loader?THREE=three!three/examples/js/QuickHull.js';
 import 'imports-loader?THREE=three!three/examples/js/geometries/ConvexGeometry.js';
 import * as THREE from 'three';
 
@@ -31,8 +31,6 @@ export default function createBridge() {
     x: 0,
     z: 0,
   };
-
-  let theta = Math.PI / 30;
 
   for (let i = 0; i < logsNumber; i++) {
     centerLogHeight = curvePoints1[i].y;

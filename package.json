@@ -7,6 +7,7 @@
     "build": "webpack"
   },
   "dependencies": {
+    "eslint": "^5.6.0",
     "three": "^0.96.0"
   },
   "author": "",

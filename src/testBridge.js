@@ -1,4 +1,4 @@
-import { } from "imports-loader?THREE=three!three/examples/js/QuickHull.js";
+import 'imports-loader?THREE=three!three/examples/js/QuickHull.js';
 import 'imports-loader?THREE=three!three/examples/js/geometries/ConvexGeometry.js';
 import * as THREE from 'three';
 
@@ -8,15 +8,15 @@ export default function createBridge() {
   let bridgeWidth = 200;
 
   let centerLogGeometry, sideLogGeometry, crossLogGeometry,
-    centerLeftLog, centerRightLog, leftLog, rightLog, underLog, topLog, crossLog1, crossLog2,
-    centerLogLength, sideLogLength, underLogLength, topLogLength, crossLogLength,
-    underLogHeight;
+      centerLeftLog, centerRightLog, leftLog, rightLog, underLog, topLog, crossLog1, crossLog2,
+      centerLogLength, sideLogLength, underLogLength, topLogLength, crossLogLength,
+      underLogHeight;
 
   underLogLength = bridgeWidth - 40;
   topLogLength = bridgeWidth - 60;
 
-  let centerLog_X = 20;
-  let sideLog_X = 65;
+  let centerLogX = 20;
+  let sideLogX = 65;
   let sideLogRotation = Math.PI / 15;
 
   let underLogGeometry = new THREE.CylinderGeometry(4, 4, underLogLength, 20, 0, false);
@@ -56,26 +56,26 @@ export default function createBridge() {
         centerLogLength = curvePoints1[i].y;
         sideLogLength = centerLogLength + 5;
         underLogHeight = curvePoints1[i].y * 0.4;
-        crossLogLength = calCrossLength(sideLog_X - centerLog_X, centerLogLength - underLogHeight, sideLogLength, sideLogRotation);
+        crossLogLength = calCrossLength(sideLogX - centerLogX, centerLogLength - underLogHeight, sideLogLength, sideLogRotation);
 
         centerLogGeometry = new THREE.CylinderGeometry(5, 5, centerLogLength, 20, 0, false);
         sideLogGeometry = new THREE.CylinderGeometry(5, 5, sideLogLength, 20, 0, false);
 
         // 真ん中の２本の柱
         centerLeftLog = new THREE.Mesh(centerLogGeometry, testMaterial);
-        centerLeftLog.position.set(curvePoints1[i].x + centerLog_X, centerLogLength / 2, curvePoints1[i].z);
+        centerLeftLog.position.set(curvePoints1[i].x + centerLogX, centerLogLength / 2, curvePoints1[i].z);
 
         centerRightLog = new THREE.Mesh(centerLogGeometry, testMaterial);
-        centerRightLog.position.set(curvePoints1[i].x - centerLog_X, centerLogLength / 2, curvePoints1[i].z);
+        centerRightLog.position.set(curvePoints1[i].x - centerLogX, centerLogLength / 2, curvePoints1[i].z);
 
         // 左端、右端の柱
         leftLog = new THREE.Mesh(sideLogGeometry, testMaterial);
         leftLog.rotation.z = sideLogRotation;
-        leftLog.position.set(curvePoints1[i].x + sideLog_X, sideLogLength / 2, curvePoints1[i].z);
+        leftLog.position.set(curvePoints1[i].x + sideLogX, sideLogLength / 2, curvePoints1[i].z);
 
         rightLog = new THREE.Mesh(sideLogGeometry, testMaterial);
         rightLog.rotation.z = -sideLogRotation;
-        rightLog.position.set(curvePoints1[i].x - sideLog_X, sideLogLength / 2, curvePoints1[i].z);
+        rightLog.position.set(curvePoints1[i].x - sideLogX, sideLogLength / 2, curvePoints1[i].z);
 
         // 一番下の柱
         underLog = new THREE.Mesh(underLogGeometry, testMaterial);

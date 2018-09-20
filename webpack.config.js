@@ -33,5 +33,10 @@ module.exports = {
       }
     ]
   },
+  devServer: {
+    contentBase: `${__dirname}/dist`,
+    inline: true,
+    hot: true
+  },
   performance: { hints: false }
 };

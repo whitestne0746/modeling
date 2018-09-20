@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "webpack-dev-server --hot --inline",
     "build": "webpack"
   },
   "dependencies": {
@@ -16,6 +17,7 @@
     "@babel/preset-env": "^7.1.0",
     "babel-loader": "^8.0.2",
     "webpack": "^4.19.1",
-    "webpack-cli": "^3.1.0"
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.8"
   }
 }

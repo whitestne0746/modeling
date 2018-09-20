@@ -1,4 +1,4 @@
-import { } from "imports-loader?THREE=three!three/examples/js/QuickHull.js";
+import { } from 'imports-loader?THREE=three!three/examples/js/QuickHull.js';
 import 'imports-loader?THREE=three!three/examples/js/geometries/ConvexGeometry.js';
 import * as THREE from 'three';
 

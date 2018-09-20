@@ -1,6 +1,6 @@
-import "imports-loader?THREE=three!three/examples/js/controls/OrbitControls.js";
-import "imports-loader?THREE=three!three/examples/js/controls/FirstPersonControls.js";
-import "imports-loader?THREE=three!three/examples/js/controls/FlyControls.js";
+import 'imports-loader?THREE=three!three/examples/js/controls/OrbitControls.js';
+import 'imports-loader?THREE=three!three/examples/js/controls/FirstPersonControls.js';
+import 'imports-loader?THREE=three!three/examples/js/controls/FlyControls.js';
 import * as THREE from 'three';
 import createBridge from './testBridge';
 
@@ -10,7 +10,12 @@ let windowWidth = 800;
 let windowHeight = 521;
 
 function init() {
-  let camera = new THREE.PerspectiveCamera(90, windowWidth / windowHeight, 0.1, 2000000);
+  let camera = new THREE.PerspectiveCamera(
+    90,
+    windowWidth / windowHeight,
+    0.1,
+    2000000
+  );
   // camera.position.set(0, 0, 0);
   camera.position.set(0, 200, -5000);
   // camera.lookAt(new THREE.Vector3(0, 0, 0));
@@ -28,8 +33,10 @@ function init() {
   let amb = new THREE.AmbientLight('#464646');
   scene.add(amb);
 
+  /*
   let axis = new THREE.AxisHelper(1000000);
   scene.add(axis);
+  */
 
   let plane = new THREE.Mesh(
     new THREE.PlaneGeometry(10000, 10000),

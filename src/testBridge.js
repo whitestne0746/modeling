@@ -7,10 +7,27 @@ export default function createBridge() {
 
   let bridgeWidth = 200;
 
-  let centerLogGeometry, sideLogGeometry, crossLogGeometry,
-      centerLeftLog, centerRightLog, leftLog, rightLog, underLog, topLog, crossLog1, crossLog2,
-      centerLogLength, sideLogLength, underLogLength, topLogLength, crossLogLength,
-      underLogHeight;
+  let centerLogGeometry,
+    sideLogGeometry,
+    crossLogGeometry,
+    centerLeftLog,
+    centerRightLog,
+    leftLog,
+    rightLog,
+    underLog,
+    topLog,
+    crossLog1,
+    crossLog2,
+    crossLog3,
+    crossLog4,
+    crossLog5,
+    crossLog6,
+    centerLogLength,
+    sideLogLength,
+    underLogLength,
+    topLogLength,
+    crossLogLength,
+    underLogHeight;
 
   underLogLength = bridgeWidth - 40;
   topLogLength = bridgeWidth - 60;
@@ -18,11 +35,20 @@ export default function createBridge() {
   let centerLogX = 20;
   let sideLogX = 65;
   let sideLogRotation = Math.PI / 15;
+  let cLRDenominator = 6;
 
-  let underLogGeometry = new THREE.CylinderGeometry(4, 4, underLogLength, 20, 0, false);
-  let topLogGeometry = new THREE.BoxGeometry(6, topLogLength, 6);
+  let underLogGeometry = new THREE.CylinderGeometry(
+    4,
+    4,
+    underLogLength,
+    20,
+    0,
+    false
+  );
+  let topLogGeometry = new THREE.BoxGeometry(14, topLogLength, 14);
 
   let testMaterial = new THREE.MeshPhongMaterial({ color: 0x0000cd });
+  let testMaterial1 = new THREE.MeshPhongMaterial({ color: 0xffffff });
 
   let startPoint1 = new THREE.Vector3(0, 90, 0);
   let middlePoint1 = new THREE.Vector3(0, 300, 3000);
@@ -38,58 +64,577 @@ export default function createBridge() {
 
   for (let i = 0; i < curvePoints1.length; i++) {
     if (i !== 0) {
-      let vertices = [
-        new THREE.Vector3(curvePoints1[i].x + bridgeWidth / 2, curvePoints1[i].y, curvePoints1[i].z),
-        new THREE.Vector3(curvePoints1[i].x - bridgeWidth / 2, curvePoints1[i].y, curvePoints1[i].z),
-        new THREE.Vector3(curvePoints1[i].x - bridgeWidth / 2, curvePoints1[i - 1].y, curvePoints1[i - 1].z),
-        new THREE.Vector3(curvePoints1[i].x + bridgeWidth / 2, curvePoints1[i - 1].y, curvePoints1[i - 1].z),
-        new THREE.Vector3(curvePoints1[i].x + bridgeWidth / 2, curvePoints1[i - 1].y + 10, curvePoints1[i - 1].z),
-        new THREE.Vector3(curvePoints1[i].x + bridgeWidth / 2, curvePoints1[i].y + 10, curvePoints1[i].z),
-        new THREE.Vector3(curvePoints1[i].x - bridgeWidth / 2, curvePoints1[i].y + 10, curvePoints1[i].z),
-        new THREE.Vector3(curvePoints1[i].x - bridgeWidth / 2, curvePoints1[i - 1].y + 10, curvePoints1[i - 1].z),
+      let vertices1 = [
+        new THREE.Vector3(
+          curvePoints1[i].x + bridgeWidth / 2,
+          curvePoints1[i].y,
+          curvePoints1[i].z
+        ),
+        new THREE.Vector3(
+          curvePoints1[i].x - bridgeWidth / 2,
+          curvePoints1[i].y,
+          curvePoints1[i].z
+        ),
+        new THREE.Vector3(
+          curvePoints1[i].x - bridgeWidth / 2,
+          curvePoints1[i - 1].y,
+          curvePoints1[i - 1].z
+        ),
+        new THREE.Vector3(
+          curvePoints1[i].x + bridgeWidth / 2,
+          curvePoints1[i - 1].y,
+          curvePoints1[i - 1].z
+        ),
+        new THREE.Vector3(
+          curvePoints1[i].x + bridgeWidth / 2,
+          curvePoints1[i - 1].y + 10,
+          curvePoints1[i - 1].z
+        ),
+        new THREE.Vector3(
+          curvePoints1[i].x + bridgeWidth / 2,
+          curvePoints1[i].y + 10,
+          curvePoints1[i].z
+        ),
+        new THREE.Vector3(
+          curvePoints1[i].x - bridgeWidth / 2,
+          curvePoints1[i].y + 10,
+          curvePoints1[i].z
+        ),
+        new THREE.Vector3(
+          curvePoints1[i].x - bridgeWidth / 2,
+          curvePoints1[i - 1].y + 10,
+          curvePoints1[i - 1].z
+        ),
       ];
-      let walkPlaceGeometry = new THREE.ConvexGeometry(vertices);
+      let walkPlaceGeometry = new THREE.ConvexGeometry(vertices1);
       let walkPlace = new THREE.Mesh(walkPlaceGeometry, testMaterial);
+
+      let vertices2 = [
+        new THREE.Vector3(
+          curvePoints1[i].x + bridgeWidth / 2 - 30,
+          curvePoints1[i].y + 10,
+          curvePoints1[i].z
+        ),
+        new THREE.Vector3(
+          curvePoints1[i].x + bridgeWidth / 2 - 35,
+          curvePoints1[i].y + 10,
+          curvePoints1[i].z
+        ),
+        new THREE.Vector3(
+          curvePoints1[i].x + bridgeWidth / 2 - 35,
+          curvePoints1[i - 1].y + 10,
+          curvePoints1[i - 1].z
+        ),
+        new THREE.Vector3(
+          curvePoints1[i].x + bridgeWidth / 2 - 30,
+          curvePoints1[i - 1].y + 10,
+          curvePoints1[i - 1].z
+        ),
+        new THREE.Vector3(
+          curvePoints1[i].x + bridgeWidth / 2 - 30,
+          curvePoints1[i - 1].y + 15,
+          curvePoints1[i - 1].z
+        ),
+        new THREE.Vector3(
+          curvePoints1[i].x + bridgeWidth / 2 - 30,
+          curvePoints1[i].y + 15,
+          curvePoints1[i].z
+        ),
+        new THREE.Vector3(
+          curvePoints1[i].x + bridgeWidth / 2 - 35,
+          curvePoints1[i].y + 15,
+          curvePoints1[i].z
+        ),
+        new THREE.Vector3(
+          curvePoints1[i].x + bridgeWidth / 2 - 35,
+          curvePoints1[i - 1].y + 15,
+          curvePoints1[i - 1].z
+        ),
+      ];
+      let handrailsGeo1 = new THREE.ConvexGeometry(vertices2);
+      let handrails1 = new THREE.Mesh(handrailsGeo1, testMaterial1);
+
+      let vertices3 = [
+        new THREE.Vector3(
+          curvePoints1[i].x + bridgeWidth / 2 - 30,
+          curvePoints1[i].y + 50,
+          curvePoints1[i].z
+        ),
+        new THREE.Vector3(
+          curvePoints1[i].x + bridgeWidth / 2 - 35,
+          curvePoints1[i].y + 50,
+          curvePoints1[i].z
+        ),
+        new THREE.Vector3(
+          curvePoints1[i].x + bridgeWidth / 2 - 35,
+          curvePoints1[i - 1].y + 50,
+          curvePoints1[i - 1].z
+        ),
+        new THREE.Vector3(
+          curvePoints1[i].x + bridgeWidth / 2 - 30,
+          curvePoints1[i - 1].y + 50,
+          curvePoints1[i - 1].z
+        ),
+        new THREE.Vector3(
+          curvePoints1[i].x + bridgeWidth / 2 - 30,
+          curvePoints1[i - 1].y + 55,
+          curvePoints1[i - 1].z
+        ),
+        new THREE.Vector3(
+          curvePoints1[i].x + bridgeWidth / 2 - 30,
+          curvePoints1[i].y + 55,
+          curvePoints1[i].z
+        ),
+        new THREE.Vector3(
+          curvePoints1[i].x + bridgeWidth / 2 - 35,
+          curvePoints1[i].y + 55,
+          curvePoints1[i].z
+        ),
+        new THREE.Vector3(
+          curvePoints1[i].x + bridgeWidth / 2 - 35,
+          curvePoints1[i - 1].y + 55,
+          curvePoints1[i - 1].z
+        ),
+      ];
+      let handrailsGeo2 = new THREE.ConvexGeometry(vertices3);
+      let handrails2 = new THREE.Mesh(handrailsGeo2, testMaterial1);
+
+      let vertices4 = [
+        new THREE.Vector3(
+          curvePoints1[i].x - bridgeWidth / 2 + 30,
+          curvePoints1[i].y + 10,
+          curvePoints1[i].z
+        ),
+        new THREE.Vector3(
+          curvePoints1[i].x - bridgeWidth / 2 + 35,
+          curvePoints1[i].y + 10,
+          curvePoints1[i].z
+        ),
+        new THREE.Vector3(
+          curvePoints1[i].x - bridgeWidth / 2 + 35,
+          curvePoints1[i - 1].y + 10,
+          curvePoints1[i - 1].z
+        ),
+        new THREE.Vector3(
+          curvePoints1[i].x - bridgeWidth / 2 + 30,
+          curvePoints1[i - 1].y + 10,
+          curvePoints1[i - 1].z
+        ),
+        new THREE.Vector3(
+          curvePoints1[i].x - bridgeWidth / 2 + 30,
+          curvePoints1[i - 1].y + 15,
+          curvePoints1[i - 1].z
+        ),
+        new THREE.Vector3(
+          curvePoints1[i].x - bridgeWidth / 2 + 30,
+          curvePoints1[i].y + 15,
+          curvePoints1[i].z
+        ),
+        new THREE.Vector3(
+          curvePoints1[i].x - bridgeWidth / 2 + 35,
+          curvePoints1[i].y + 15,
+          curvePoints1[i].z
+        ),
+        new THREE.Vector3(
+          curvePoints1[i].x - bridgeWidth / 2 + 35,
+          curvePoints1[i - 1].y + 15,
+          curvePoints1[i - 1].z
+        ),
+      ];
+      let handrailsGeo3 = new THREE.ConvexGeometry(vertices4);
+      let handrails3 = new THREE.Mesh(handrailsGeo3, testMaterial1);
+
+      let vertices5 = [
+        new THREE.Vector3(
+          curvePoints1[i].x - bridgeWidth / 2 + 30,
+          curvePoints1[i].y + 50,
+          curvePoints1[i].z
+        ),
+        new THREE.Vector3(
+          curvePoints1[i].x - bridgeWidth / 2 + 35,
+          curvePoints1[i].y + 50,
+          curvePoints1[i].z
+        ),
+        new THREE.Vector3(
+          curvePoints1[i].x - bridgeWidth / 2 + 35,
+          curvePoints1[i - 1].y + 50,
+          curvePoints1[i - 1].z
+        ),
+        new THREE.Vector3(
+          curvePoints1[i].x - bridgeWidth / 2 + 30,
+          curvePoints1[i - 1].y + 50,
+          curvePoints1[i - 1].z
+        ),
+        new THREE.Vector3(
+          curvePoints1[i].x - bridgeWidth / 2 + 30,
+          curvePoints1[i - 1].y + 55,
+          curvePoints1[i - 1].z
+        ),
+        new THREE.Vector3(
+          curvePoints1[i].x - bridgeWidth / 2 + 30,
+          curvePoints1[i].y + 55,
+          curvePoints1[i].z
+        ),
+        new THREE.Vector3(
+          curvePoints1[i].x - bridgeWidth / 2 + 35,
+          curvePoints1[i].y + 55,
+          curvePoints1[i].z
+        ),
+        new THREE.Vector3(
+          curvePoints1[i].x - bridgeWidth / 2 + 35,
+          curvePoints1[i - 1].y + 55,
+          curvePoints1[i - 1].z
+        ),
+      ];
+      let handrailsGeo4 = new THREE.ConvexGeometry(vertices5);
+      let handrails4 = new THREE.Mesh(handrailsGeo4, testMaterial1);
+
+      let vertices6 = [
+        new THREE.Vector3(
+          curvePoints1[i].x + bridgeWidth / 2 - 31,
+          curvePoints1[i].y + 31,
+          curvePoints1[i].z
+        ),
+        new THREE.Vector3(
+          curvePoints1[i].x + bridgeWidth / 2 - 34,
+          curvePoints1[i].y + 31,
+          curvePoints1[i].z
+        ),
+        new THREE.Vector3(
+          curvePoints1[i].x + bridgeWidth / 2 - 34,
+          curvePoints1[i - 1].y + 31,
+          curvePoints1[i - 1].z
+        ),
+        new THREE.Vector3(
+          curvePoints1[i].x + bridgeWidth / 2 - 31,
+          curvePoints1[i - 1].y + 31,
+          curvePoints1[i - 1].z
+        ),
+        new THREE.Vector3(
+          curvePoints1[i].x + bridgeWidth / 2 - 31,
+          curvePoints1[i - 1].y + 34,
+          curvePoints1[i - 1].z
+        ),
+        new THREE.Vector3(
+          curvePoints1[i].x + bridgeWidth / 2 - 31,
+          curvePoints1[i].y + 34,
+          curvePoints1[i].z
+        ),
+        new THREE.Vector3(
+          curvePoints1[i].x + bridgeWidth / 2 - 34,
+          curvePoints1[i].y + 34,
+          curvePoints1[i].z
+        ),
+        new THREE.Vector3(
+          curvePoints1[i].x + bridgeWidth / 2 - 34,
+          curvePoints1[i - 1].y + 34,
+          curvePoints1[i - 1].z
+        ),
+      ];
+      let handrailsGeo5 = new THREE.ConvexGeometry(vertices6);
+      let handrails5 = new THREE.Mesh(handrailsGeo5, testMaterial1);
+
+      let vertices7 = [
+        new THREE.Vector3(
+          curvePoints1[i].x - bridgeWidth / 2 + 31,
+          curvePoints1[i].y + 31,
+          curvePoints1[i].z
+        ),
+        new THREE.Vector3(
+          curvePoints1[i].x - bridgeWidth / 2 + 34,
+          curvePoints1[i].y + 31,
+          curvePoints1[i].z
+        ),
+        new THREE.Vector3(
+          curvePoints1[i].x - bridgeWidth / 2 + 34,
+          curvePoints1[i - 1].y + 31,
+          curvePoints1[i - 1].z
+        ),
+        new THREE.Vector3(
+          curvePoints1[i].x - bridgeWidth / 2 + 31,
+          curvePoints1[i - 1].y + 31,
+          curvePoints1[i - 1].z
+        ),
+        new THREE.Vector3(
+          curvePoints1[i].x - bridgeWidth / 2 + 31,
+          curvePoints1[i - 1].y + 34,
+          curvePoints1[i - 1].z
+        ),
+        new THREE.Vector3(
+          curvePoints1[i].x - bridgeWidth / 2 + 31,
+          curvePoints1[i].y + 34,
+          curvePoints1[i].z
+        ),
+        new THREE.Vector3(
+          curvePoints1[i].x - bridgeWidth / 2 + 34,
+          curvePoints1[i].y + 34,
+          curvePoints1[i].z
+        ),
+        new THREE.Vector3(
+          curvePoints1[i].x - bridgeWidth / 2 + 34,
+          curvePoints1[i - 1].y + 34,
+          curvePoints1[i - 1].z
+        ),
+      ];
+      let handrailsGeo6 = new THREE.ConvexGeometry(vertices7);
+      let handrails6 = new THREE.Mesh(handrailsGeo6, testMaterial1);
+
       bridge.add(walkPlace);
+      bridge.add(handrails1);
+      bridge.add(handrails2);
+      bridge.add(handrails3);
+      bridge.add(handrails4);
+      bridge.add(handrails5);
+      bridge.add(handrails6);
+
+      if (i % 10 === 0) {
+        let vertices1 = [
+          new THREE.Vector3(
+            curvePoints1[i].x + bridgeWidth / 2 - 30,
+            curvePoints1[i].y + 10,
+            curvePoints1[i].z
+          ),
+          new THREE.Vector3(
+            curvePoints1[i].x + bridgeWidth / 2 - 35,
+            curvePoints1[i].y + 10,
+            curvePoints1[i].z
+          ),
+          new THREE.Vector3(
+            curvePoints1[i].x + bridgeWidth / 2 - 35,
+            curvePoints1[i - 1].y + 10,
+            curvePoints1[i - 1].z
+          ),
+          new THREE.Vector3(
+            curvePoints1[i].x + bridgeWidth / 2 - 30,
+            curvePoints1[i - 1].y + 10,
+            curvePoints1[i - 1].z
+          ),
+          new THREE.Vector3(
+            curvePoints1[i].x + bridgeWidth / 2 - 30,
+            curvePoints1[i - 1].y + 55,
+            curvePoints1[i - 1].z
+          ),
+          new THREE.Vector3(
+            curvePoints1[i].x + bridgeWidth / 2 - 30,
+            curvePoints1[i].y + 55,
+            curvePoints1[i].z
+          ),
+          new THREE.Vector3(
+            curvePoints1[i].x + bridgeWidth / 2 - 35,
+            curvePoints1[i].y + 55,
+            curvePoints1[i].z
+          ),
+          new THREE.Vector3(
+            curvePoints1[i].x + bridgeWidth / 2 - 35,
+            curvePoints1[i - 1].y + 55,
+            curvePoints1[i - 1].z
+          ),
+        ];
+        let verticalHRGeo1 = new THREE.ConvexGeometry(vertices1);
+        let verticalHR1 = new THREE.Mesh(verticalHRGeo1, testMaterial1);
+
+        let vertices2 = [
+          new THREE.Vector3(
+            curvePoints1[i].x - bridgeWidth / 2 + 30,
+            curvePoints1[i].y + 10,
+            curvePoints1[i].z
+          ),
+          new THREE.Vector3(
+            curvePoints1[i].x - bridgeWidth / 2 + 35,
+            curvePoints1[i].y + 10,
+            curvePoints1[i].z
+          ),
+          new THREE.Vector3(
+            curvePoints1[i].x - bridgeWidth / 2 + 35,
+            curvePoints1[i - 1].y + 10,
+            curvePoints1[i - 1].z
+          ),
+          new THREE.Vector3(
+            curvePoints1[i].x - bridgeWidth / 2 + 30,
+            curvePoints1[i - 1].y + 10,
+            curvePoints1[i - 1].z
+          ),
+          new THREE.Vector3(
+            curvePoints1[i].x - bridgeWidth / 2 + 30,
+            curvePoints1[i - 1].y + 55,
+            curvePoints1[i - 1].z
+          ),
+          new THREE.Vector3(
+            curvePoints1[i].x - bridgeWidth / 2 + 30,
+            curvePoints1[i].y + 55,
+            curvePoints1[i].z
+          ),
+          new THREE.Vector3(
+            curvePoints1[i].x - bridgeWidth / 2 + 35,
+            curvePoints1[i].y + 55,
+            curvePoints1[i].z
+          ),
+          new THREE.Vector3(
+            curvePoints1[i].x - bridgeWidth / 2 + 35,
+            curvePoints1[i - 1].y + 55,
+            curvePoints1[i - 1].z
+          ),
+        ];
+        let verticalHRGeo2 = new THREE.ConvexGeometry(vertices2);
+        let verticalHR2 = new THREE.Mesh(verticalHRGeo2, testMaterial1);
+
+        bridge.add(verticalHR1);
+        bridge.add(verticalHR2);
+      }
 
       if (i % 20 === 0) {
         centerLogLength = curvePoints1[i].y;
         sideLogLength = centerLogLength + 5;
         underLogHeight = curvePoints1[i].y * 0.4;
-        crossLogLength = calCrossLength(sideLogX - centerLogX, centerLogLength - underLogHeight, sideLogLength, sideLogRotation);
+        crossLogLength =
+          calCrossLength(
+            sideLogX - centerLogX,
+            centerLogLength - underLogHeight,
+            sideLogLength,
+            sideLogRotation
+          ) - 5;
 
-        centerLogGeometry = new THREE.CylinderGeometry(5, 5, centerLogLength, 20, 0, false);
-        sideLogGeometry = new THREE.CylinderGeometry(5, 5, sideLogLength, 20, 0, false);
+        centerLogGeometry = new THREE.CylinderGeometry(
+          5,
+          5,
+          centerLogLength,
+          20,
+          0,
+          false
+        );
+        sideLogGeometry = new THREE.CylinderGeometry(
+          5,
+          5,
+          sideLogLength,
+          20,
+          0,
+          false
+        );
+        crossLogGeometry = new THREE.CylinderGeometry(
+          4,
+          4,
+          crossLogLength,
+          20,
+          0,
+          false
+        );
 
         // 真ん中の２本の柱
         centerLeftLog = new THREE.Mesh(centerLogGeometry, testMaterial);
-        centerLeftLog.position.set(curvePoints1[i].x + centerLogX, centerLogLength / 2, curvePoints1[i].z);
+        centerLeftLog.position.set(
+          curvePoints1[i].x + centerLogX,
+          centerLogLength / 2,
+          curvePoints1[i].z
+        );
 
         centerRightLog = new THREE.Mesh(centerLogGeometry, testMaterial);
-        centerRightLog.position.set(curvePoints1[i].x - centerLogX, centerLogLength / 2, curvePoints1[i].z);
+        centerRightLog.position.set(
+          curvePoints1[i].x - centerLogX,
+          centerLogLength / 2,
+          curvePoints1[i].z
+        );
 
         // 左端、右端の柱
         leftLog = new THREE.Mesh(sideLogGeometry, testMaterial);
         leftLog.rotation.z = sideLogRotation;
-        leftLog.position.set(curvePoints1[i].x + sideLogX, sideLogLength / 2, curvePoints1[i].z);
+        leftLog.position.set(
+          curvePoints1[i].x + sideLogX,
+          sideLogLength / 2,
+          curvePoints1[i].z
+        );
 
         rightLog = new THREE.Mesh(sideLogGeometry, testMaterial);
         rightLog.rotation.z = -sideLogRotation;
-        rightLog.position.set(curvePoints1[i].x - sideLogX, sideLogLength / 2, curvePoints1[i].z);
+        rightLog.position.set(
+          curvePoints1[i].x - sideLogX,
+          sideLogLength / 2,
+          curvePoints1[i].z
+        );
 
         // 一番下の柱
         underLog = new THREE.Mesh(underLogGeometry, testMaterial);
         underLog.rotation.z = Math.PI / 2;
-        underLog.position.set(curvePoints1[i].x, underLogHeight, curvePoints1[i].z);
+        underLog.position.set(
+          curvePoints1[i].x,
+          underLogHeight,
+          curvePoints1[i].z
+        );
+
+        topLog = new THREE.Mesh(topLogGeometry, testMaterial1);
+        topLog.rotation.z = Math.PI / 2;
+        topLog.position.set(
+          curvePoints1[i].x,
+          curvePoints1[i].y - 7,
+          curvePoints1[i].z
+        );
 
         // クロスしている柱
-        crossLogGeometry = new THREE.CylinderGeometry(4, 4, bridgeWidth - 40, 20, 0, false);
+        crossLog1 = new THREE.Mesh(crossLogGeometry, testMaterial);
+        crossLog1.rotation.z = Math.PI / cLRDenominator;
+        crossLog1.position.set(
+          sideLogX - centerLogX,
+          curvePoints1[i].y - underLogHeight + 8,
+          curvePoints1[i].z
+        );
+
+        crossLog2 = new THREE.Mesh(crossLogGeometry, testMaterial);
+        crossLog2.rotation.z = -Math.PI / (cLRDenominator + 1);
+        crossLog2.position.set(
+          sideLogX - centerLogX,
+          curvePoints1[i].y - underLogHeight + 8,
+          curvePoints1[i].z
+        );
+
+        crossLog3 = new THREE.Mesh(crossLogGeometry, testMaterial);
+        crossLog3.rotation.z = Math.PI / (cLRDenominator + 0.5);
+        crossLog3.position.set(
+          curvePoints1[i].x,
+          curvePoints1[i].y - underLogHeight + 8,
+          curvePoints1[i].z
+        );
+
+        crossLog4 = new THREE.Mesh(crossLogGeometry, testMaterial);
+        crossLog4.rotation.z = -Math.PI / (cLRDenominator + 0.5);
+        crossLog4.position.set(
+          curvePoints1[i].x,
+          curvePoints1[i].y - underLogHeight + 8,
+          curvePoints1[i].z
+        );
+
+        crossLog5 = new THREE.Mesh(crossLogGeometry, testMaterial);
+        crossLog5.rotation.z = Math.PI / cLRDenominator;
+        crossLog5.position.set(
+          -(sideLogX - centerLogX),
+          curvePoints1[i].y - underLogHeight + 8,
+          curvePoints1[i].z
+        );
+
+        crossLog6 = new THREE.Mesh(crossLogGeometry, testMaterial);
+        crossLog6.rotation.z = -Math.PI / (cLRDenominator + 1);
+        crossLog6.position.set(
+          -(sideLogX - centerLogX),
+          curvePoints1[i].y - underLogHeight + 8,
+          curvePoints1[i].z
+        );
+
+        if (i > curvePoints1.length / 2) {
+          cLRDenominator -= 0.3;
+        } else {
+          cLRDenominator += 0.3;
+        }
 
         bridge.add(centerLeftLog);
         bridge.add(centerRightLog);
         bridge.add(leftLog);
         bridge.add(rightLog);
         bridge.add(underLog);
+        bridge.add(topLog);
+        bridge.add(crossLog1);
+        bridge.add(crossLog2);
+        bridge.add(crossLog3);
+        bridge.add(crossLog4);
+        bridge.add(crossLog5);
+        bridge.add(crossLog6);
       }
     }
   }
@@ -97,6 +642,12 @@ export default function createBridge() {
   return bridge;
 }
 
-function calCrossLength(w, h, length, rad) {
-  return '';
+function calCrossLength(w, h, sideLogLength, rad) {
+  let l = w + (Math.sin(rad) * sideLogLength) / 2;
+  let L = Math.sqrt(h * h + l * l);
+  return L;
+}
+
+function calCenterCrossLength(w, h) {
+  return Math.sqrt(w * w + h * h);
 }

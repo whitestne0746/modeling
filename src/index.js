@@ -2,7 +2,8 @@ import 'imports-loader?THREE=three!three/examples/js/controls/OrbitControls.js';
 import 'imports-loader?THREE=three!three/examples/js/controls/FirstPersonControls.js';
 import 'imports-loader?THREE=three!three/examples/js/controls/FlyControls.js';
 import * as THREE from 'three';
-import createBridge from './testBridge';
+import createBridge from './bridge';
+import createHome from './home';
 
 window.addEventListener('DOMContentLoaded', init);
 
@@ -11,7 +12,7 @@ let windowHeight = 521;
 
 function init() {
   let camera = new THREE.PerspectiveCamera(
-    90,
+    45,
     windowWidth / windowHeight,
     0.1,
     2000000
@@ -46,12 +47,15 @@ function init() {
   scene.add(plane);
 
   let bridge = createBridge();
-
+  /*
   bridge.rotation.y = -Math.PI / 3;
   bridge.position.x = 300;
-  bridge.position.z = -4800;
-
+  */
+  bridge.position.x = -1000;
   scene.add(bridge);
+
+  let home = createHome(500, 300, 600);
+  scene.add(home);
 
   const renderer = new THREE.WebGLRenderer({ antialias: true });
   renderer.setPixelRatio(window.devicePixelRatio);

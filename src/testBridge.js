@@ -7,6 +7,11 @@ export default function createBridge() {
 
   let bridgeWidth = 200;
 
+  let testMaterial = new THREE.MeshPhongMaterial({ color: 0x0000cd });
+  let logMaterial1 = new THREE.MeshPhongMaterial({ color: 0x402724 });
+  let logMaterial2 = new THREE.MeshPhongMaterial({ color: 0x9C6B40 });
+  let logMaterial3 = new THREE.MeshPhongMaterial({ color: 0x6B3000 });
+
   let centerLogGeometry,
     sideLogGeometry,
     crossLogGeometry,
@@ -47,8 +52,7 @@ export default function createBridge() {
   );
   let topLogGeometry = new THREE.BoxGeometry(14, topLogLength, 14);
 
-  let testMaterial = new THREE.MeshPhongMaterial({ color: 0x0000cd });
-  let testMaterial1 = new THREE.MeshPhongMaterial({ color: 0xffffff });
+
 
   let startPoint1 = new THREE.Vector3(0, 90, 0);
   let middlePoint1 = new THREE.Vector3(0, 300, 3000);
@@ -107,7 +111,7 @@ export default function createBridge() {
         ),
       ];
       let walkPlaceGeometry = new THREE.ConvexGeometry(vertices1);
-      let walkPlace = new THREE.Mesh(walkPlaceGeometry, testMaterial);
+      let walkPlace = new THREE.Mesh(walkPlaceGeometry, logMaterial3);
 
       let vertices2 = [
         new THREE.Vector3(
@@ -152,7 +156,7 @@ export default function createBridge() {
         ),
       ];
       let handrailsGeo1 = new THREE.ConvexGeometry(vertices2);
-      let handrails1 = new THREE.Mesh(handrailsGeo1, testMaterial1);
+      let handrails1 = new THREE.Mesh(handrailsGeo1, logMaterial2);
 
       let vertices3 = [
         new THREE.Vector3(
@@ -197,7 +201,7 @@ export default function createBridge() {
         ),
       ];
       let handrailsGeo2 = new THREE.ConvexGeometry(vertices3);
-      let handrails2 = new THREE.Mesh(handrailsGeo2, testMaterial1);
+      let handrails2 = new THREE.Mesh(handrailsGeo2, logMaterial2);
 
       let vertices4 = [
         new THREE.Vector3(
@@ -242,7 +246,7 @@ export default function createBridge() {
         ),
       ];
       let handrailsGeo3 = new THREE.ConvexGeometry(vertices4);
-      let handrails3 = new THREE.Mesh(handrailsGeo3, testMaterial1);
+      let handrails3 = new THREE.Mesh(handrailsGeo3, logMaterial2);
 
       let vertices5 = [
         new THREE.Vector3(
@@ -287,7 +291,7 @@ export default function createBridge() {
         ),
       ];
       let handrailsGeo4 = new THREE.ConvexGeometry(vertices5);
-      let handrails4 = new THREE.Mesh(handrailsGeo4, testMaterial1);
+      let handrails4 = new THREE.Mesh(handrailsGeo4, logMaterial2);
 
       let vertices6 = [
         new THREE.Vector3(
@@ -332,7 +336,7 @@ export default function createBridge() {
         ),
       ];
       let handrailsGeo5 = new THREE.ConvexGeometry(vertices6);
-      let handrails5 = new THREE.Mesh(handrailsGeo5, testMaterial1);
+      let handrails5 = new THREE.Mesh(handrailsGeo5, logMaterial2);
 
       let vertices7 = [
         new THREE.Vector3(
@@ -377,7 +381,7 @@ export default function createBridge() {
         ),
       ];
       let handrailsGeo6 = new THREE.ConvexGeometry(vertices7);
-      let handrails6 = new THREE.Mesh(handrailsGeo6, testMaterial1);
+      let handrails6 = new THREE.Mesh(handrailsGeo6, logMaterial2);
 
       bridge.add(walkPlace);
       bridge.add(handrails1);
@@ -431,7 +435,7 @@ export default function createBridge() {
           ),
         ];
         let verticalHRGeo1 = new THREE.ConvexGeometry(vertices1);
-        let verticalHR1 = new THREE.Mesh(verticalHRGeo1, testMaterial1);
+        let verticalHR1 = new THREE.Mesh(verticalHRGeo1, logMaterial2);
 
         let vertices2 = [
           new THREE.Vector3(
@@ -476,7 +480,7 @@ export default function createBridge() {
           ),
         ];
         let verticalHRGeo2 = new THREE.ConvexGeometry(vertices2);
-        let verticalHR2 = new THREE.Mesh(verticalHRGeo2, testMaterial1);
+        let verticalHR2 = new THREE.Mesh(verticalHRGeo2, logMaterial2);
 
         bridge.add(verticalHR1);
         bridge.add(verticalHR2);
@@ -520,14 +524,14 @@ export default function createBridge() {
         );
 
         // 真ん中の２本の柱
-        centerLeftLog = new THREE.Mesh(centerLogGeometry, testMaterial);
+        centerLeftLog = new THREE.Mesh(centerLogGeometry, logMaterial1);
         centerLeftLog.position.set(
           curvePoints1[i].x + centerLogX,
           centerLogLength / 2,
           curvePoints1[i].z
         );
 
-        centerRightLog = new THREE.Mesh(centerLogGeometry, testMaterial);
+        centerRightLog = new THREE.Mesh(centerLogGeometry, logMaterial1);
         centerRightLog.position.set(
           curvePoints1[i].x - centerLogX,
           centerLogLength / 2,
@@ -535,7 +539,7 @@ export default function createBridge() {
         );
 
         // 左端、右端の柱
-        leftLog = new THREE.Mesh(sideLogGeometry, testMaterial);
+        leftLog = new THREE.Mesh(sideLogGeometry, logMaterial1);
         leftLog.rotation.z = sideLogRotation;
         leftLog.position.set(
           curvePoints1[i].x + sideLogX,
@@ -543,7 +547,7 @@ export default function createBridge() {
           curvePoints1[i].z
         );
 
-        rightLog = new THREE.Mesh(sideLogGeometry, testMaterial);
+        rightLog = new THREE.Mesh(sideLogGeometry, logMaterial1);
         rightLog.rotation.z = -sideLogRotation;
         rightLog.position.set(
           curvePoints1[i].x - sideLogX,
@@ -552,7 +556,7 @@ export default function createBridge() {
         );
 
         // 一番下の柱
-        underLog = new THREE.Mesh(underLogGeometry, testMaterial);
+        underLog = new THREE.Mesh(underLogGeometry, logMaterial2);
         underLog.rotation.z = Math.PI / 2;
         underLog.position.set(
           curvePoints1[i].x,
@@ -560,7 +564,7 @@ export default function createBridge() {
           curvePoints1[i].z
         );
 
-        topLog = new THREE.Mesh(topLogGeometry, testMaterial1);
+        topLog = new THREE.Mesh(topLogGeometry, logMaterial2);
         topLog.rotation.z = Math.PI / 2;
         topLog.position.set(
           curvePoints1[i].x,
@@ -569,7 +573,7 @@ export default function createBridge() {
         );
 
         // クロスしている柱
-        crossLog1 = new THREE.Mesh(crossLogGeometry, testMaterial);
+        crossLog1 = new THREE.Mesh(crossLogGeometry, logMaterial2);
         crossLog1.rotation.z = Math.PI / cLRDenominator;
         crossLog1.position.set(
           sideLogX - centerLogX,
@@ -577,7 +581,7 @@ export default function createBridge() {
           curvePoints1[i].z
         );
 
-        crossLog2 = new THREE.Mesh(crossLogGeometry, testMaterial);
+        crossLog2 = new THREE.Mesh(crossLogGeometry, logMaterial2);
         crossLog2.rotation.z = -Math.PI / (cLRDenominator + 1);
         crossLog2.position.set(
           sideLogX - centerLogX,
@@ -585,7 +589,7 @@ export default function createBridge() {
           curvePoints1[i].z
         );
 
-        crossLog3 = new THREE.Mesh(crossLogGeometry, testMaterial);
+        crossLog3 = new THREE.Mesh(crossLogGeometry, logMaterial2);
         crossLog3.rotation.z = Math.PI / (cLRDenominator + 0.5);
         crossLog3.position.set(
           curvePoints1[i].x,
@@ -593,7 +597,7 @@ export default function createBridge() {
           curvePoints1[i].z
         );
 
-        crossLog4 = new THREE.Mesh(crossLogGeometry, testMaterial);
+        crossLog4 = new THREE.Mesh(crossLogGeometry, logMaterial2);
         crossLog4.rotation.z = -Math.PI / (cLRDenominator + 0.5);
         crossLog4.position.set(
           curvePoints1[i].x,
@@ -601,7 +605,7 @@ export default function createBridge() {
           curvePoints1[i].z
         );
 
-        crossLog5 = new THREE.Mesh(crossLogGeometry, testMaterial);
+        crossLog5 = new THREE.Mesh(crossLogGeometry, logMaterial2);
         crossLog5.rotation.z = Math.PI / cLRDenominator;
         crossLog5.position.set(
           -(sideLogX - centerLogX),
@@ -609,7 +613,7 @@ export default function createBridge() {
           curvePoints1[i].z
         );
 
-        crossLog6 = new THREE.Mesh(crossLogGeometry, testMaterial);
+        crossLog6 = new THREE.Mesh(crossLogGeometry, testMatlogMaterial2erial);
         crossLog6.rotation.z = -Math.PI / (cLRDenominator + 1);
         crossLog6.position.set(
           -(sideLogX - centerLogX),

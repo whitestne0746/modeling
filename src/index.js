@@ -4,6 +4,7 @@ import 'imports-loader?THREE=three!three/examples/js/controls/FlyControls.js';
 import * as THREE from 'three';
 import createBridge from './bridge';
 import createHome from './home';
+import createCastle from './castle';
 
 window.addEventListener('DOMContentLoaded', init);
 
@@ -54,8 +55,13 @@ function init() {
   bridge.position.x = -1000;
   scene.add(bridge);
 
+  /*
   let home = createHome(500, 300, 600);
   scene.add(home);
+  */
+
+  let castle = createCastle();
+  scene.add(castle);
 
   const renderer = new THREE.WebGLRenderer({ antialias: true });
   renderer.setPixelRatio(window.devicePixelRatio);

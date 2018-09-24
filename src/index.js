@@ -1,6 +1,7 @@
 import 'imports-loader?THREE=three!three/examples/js/controls/OrbitControls.js';
 import 'imports-loader?THREE=three!three/examples/js/controls/FirstPersonControls.js';
 import 'imports-loader?THREE=three!three/examples/js/controls/FlyControls.js';
+import 'imports-loader?THREE=three!three/examples/js/objects/Water.js';
 import * as THREE from 'three';
 import createBridge from './bridge';
 import createHome from './home';
@@ -12,6 +13,12 @@ let windowWidth = 800;
 let windowHeight = 521;
 
 function init() {
+  const renderer = new THREE.WebGLRenderer({ antialias: true });
+  renderer.setPixelRatio(window.devicePixelRatio);
+  renderer.setSize(windowWidth, windowHeight);
+  renderer.setClearColor(0x000000, 1.0);
+  document.body.appendChild(renderer.domElement);
+
   let camera = new THREE.PerspectiveCamera(
     45,
     windowWidth / windowHeight,
@@ -60,21 +67,38 @@ function init() {
   scene.add(home);
   */
 
+  let waterNormals = new THREE.TextureLoader('../texture/water1.jpg');
+  waterNormals.wrapS = waterNormals.wrapT = THREE.RepeatWrapping;
+
+  let water = new THREE.Water(renderer, camera, scene, {
+    textureWidth: 512,
+    textureHeight: 512,
+    waterNormals: waterNormals,
+    alpha: 1.0,
+    sunDirection: light.position.clone().normalize(),
+    sunColor: 0xffffff,
+    waterColor: 0x001e0f,
+    distortionScale: 50.0,
+  });
+  let aMeshMirror = new THREE.Mesh(
+    new THREE.PlaneGeometry(1000, 1000, 5, 5),
+    water.material
+  );
+  aMeshMirror.rotation.x = Math.PI / 2;
+  aMeshMirror.add(water);
+  // scene.add(aMeshMirror);
+
+  /*
   let castle = createCastle();
   scene.add(castle);
-
-  const renderer = new THREE.WebGLRenderer({ antialias: true });
-  renderer.setPixelRatio(window.devicePixelRatio);
-  renderer.setSize(windowWidth, windowHeight);
-  renderer.setClearColor(0x000000, 1.0);
-
-  document.body.appendChild(renderer.domElement);
+  */
 
   animation();
 
   function animation() {
     requestAnimationFrame(animation);
     // camera.lookAt(new THREE.Vector3(0, 0, 0));
+    water.material.uniforms.time.value += 1.0 / 60.0;
     renderer.render(scene, camera);
   }
 }

@@ -55,11 +55,9 @@ function init() {
   scene.add(plane);
 
   let bridge = createBridge();
-  /*
   bridge.rotation.y = -Math.PI / 3;
-  bridge.position.x = 300;
-  */
-  bridge.position.x = -1000;
+  bridge.position.x = 500;
+  bridge.position.z = -4000;
   scene.add(bridge);
 
   /*
@@ -67,6 +65,7 @@ function init() {
   scene.add(home);
   */
 
+  /*
   let waterNormals = new THREE.TextureLoader('../texture/water1.jpg');
   waterNormals.wrapS = waterNormals.wrapT = THREE.RepeatWrapping;
 
@@ -86,6 +85,7 @@ function init() {
   );
   aMeshMirror.rotation.x = Math.PI / 2;
   aMeshMirror.add(water);
+  */
   // scene.add(aMeshMirror);
 
   /*
@@ -98,7 +98,7 @@ function init() {
   function animation() {
     requestAnimationFrame(animation);
     // camera.lookAt(new THREE.Vector3(0, 0, 0));
-    water.material.uniforms.time.value += 1.0 / 60.0;
+    // water.material.uniforms.time.value += 1.0 / 60.0;
     renderer.render(scene, camera);
   }
 }

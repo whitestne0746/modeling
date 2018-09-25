@@ -9,8 +9,8 @@ export default function createBridge() {
 
   let testMaterial = new THREE.MeshPhongMaterial({ color: 0x0000cd });
   let logMaterial1 = new THREE.MeshPhongMaterial({ color: 0x402724 });
-  let logMaterial2 = new THREE.MeshPhongMaterial({ color: 0x9C6B40 });
-  let logMaterial3 = new THREE.MeshPhongMaterial({ color: 0x6B3000 });
+  let logMaterial2 = new THREE.MeshPhongMaterial({ color: 0x9c6b40 });
+  let logMaterial3 = new THREE.MeshPhongMaterial({ color: 0x6b3000 });
 
   let centerLogGeometry,
     sideLogGeometry,
@@ -51,8 +51,6 @@ export default function createBridge() {
     false
   );
   let topLogGeometry = new THREE.BoxGeometry(14, topLogLength, 14);
-
-
 
   let startPoint1 = new THREE.Vector3(0, 90, 0);
   let middlePoint1 = new THREE.Vector3(0, 300, 3000);

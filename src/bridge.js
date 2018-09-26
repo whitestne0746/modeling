@@ -486,7 +486,7 @@ export default function createBridge() {
         bridge.add(verticalHR2);
       }
 
-      if (i % 20 === 0) {
+      if (i % 30 === 0) {
         centerLogLength = curvePoints1[i].y;
         sideLogLength = centerLogLength + 5;
         underLogHeight = curvePoints1[i].y * 0.4;

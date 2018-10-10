@@ -6,6 +6,7 @@ import * as THREE from 'three'
 import createBridge from './bridge'
 import createHome from './home'
 import createCastle from './castle'
+import createMountain from './mountain'
 
 window.addEventListener('DOMContentLoaded', init)
 
@@ -55,6 +56,13 @@ function init() {
   bridge.position.x = 800
   bridge.position.z = -9000
   scene.add(bridge)
+
+  let mountain1height = 6000
+  let mountain1 = createMountain(1000, 5000, mountain1height, 0x2f4f4f)
+  mountain1.position.x = 1000
+  mountain1.position.z = 35000
+  mountain1.position.y = mountain1height / 2
+  scene.add(mountain1)
 
   let city = new THREE.Object3D()
   scene.add(city)

@@ -10,7 +10,7 @@ module.exports = {
     //  出力ファイルのディレクトリ名
     path: `${__dirname}/dist`,
     // 出力ファイル名
-    filename: 'main.js'
+    filename: 'main.js',
   },
   module: {
     rules: [
@@ -26,17 +26,17 @@ module.exports = {
               presets: [
                 // プリセットを指定することで、ES2018 を ES5 に変換
                 '@babel/preset-env',
-              ]
-            }
-          }
-        ]
-      }
-    ]
+              ],
+            },
+          },
+        ],
+      },
+    ],
   },
   devServer: {
     contentBase: `${__dirname}/dist`,
     inline: true,
-    hot: true
+    hot: true,
   },
-  performance: { hints: false }
-};
+  performance: { hints: false },
+}

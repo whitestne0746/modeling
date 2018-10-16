@@ -58,11 +58,18 @@ function init() {
   scene.add(bridge)
 
   let mountain1height = 6000
-  let mountain1 = createMountain(1000, 5000, mountain1height, 0x2f4f4f)
+  let mountain1 = createMountain(1000, 8000, mountain1height, 0x2f4f4f)
   mountain1.position.x = 1000
   mountain1.position.z = 35000
   mountain1.position.y = mountain1height / 2
   scene.add(mountain1)
+
+  let mountain2height = 20000
+  let mountain2 = createMountain(2000, 30000, mountain2height, 0x2f4f4f)
+  mountain2.position.x = -20000
+  mountain2.position.z = 70000
+  mountain2.position.y = mountain2height / 2
+  scene.add(mountain2)
 
   let city = new THREE.Object3D()
   scene.add(city)
